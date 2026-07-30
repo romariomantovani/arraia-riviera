@@ -1,0 +1,860 @@
+/* ==========================================================================
+   Arraiá Riviera — papel + xilogravura
+   Paleta tirada de bandeirinha de papel de seda. Texto em marrom-tinta,
+   nunca preto. Contorno grosso e sombra dura deslocada = traço de xilogravura.
+   ========================================================================== */
+
+:root{
+  --papel:    #FFF3DC;
+  --papel-2:  #FFE9BF;
+  --tinta:    #3A2418;
+  --vermelho: #E23B2E;
+  --amarelo:  #FFC531;
+  --verde:    #1E9E5A;
+  --azul:     #2B6CB0;
+  --laranja:  #F2761F;
+  --noite:    #17223B;
+  --noite-2:  #1F2E4F;
+
+  --f-display: 'Alfa Slab One', Rockwell, Georgia, serif;
+  --f-mao: 'Caveat', 'Segoe Script', cursive;
+  --f-corpo: 'Nunito', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  --linha: 3px;                    /* espessura do contorno de xilogravura */
+  --varal-h: 118px;
+  --raio: 14px;
+}
+
+*,*::before,*::after{ box-sizing:border-box; }
+
+html{ scroll-behavior:smooth; }
+
+body{
+  margin:0;
+  background:var(--papel);
+  color:var(--tinta);
+  font-family:var(--f-corpo);
+  font-size:1.0625rem;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+
+/* grão de papel por cima de tudo, sem atrapalhar cliques */
+body::after{
+  content:"";
+  position:fixed; inset:0; z-index:99;
+  pointer-events:none;
+  opacity:.32;
+  mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
+}
+
+img{ max-width:100%; display:block; }
+.sprite{ position:absolute; width:0; height:0; overflow:hidden; }
+
+/* ---------- acessibilidade ---------- */
+.pular{
+  position:absolute; left:-9999px; top:0; z-index:200;
+  background:var(--tinta); color:var(--papel);
+  padding:.75rem 1.25rem; border-radius:0 0 var(--raio) 0;
+  font-weight:800;
+}
+.pular:focus{ left:0; }
+
+:focus-visible{
+  outline:4px solid var(--azul);
+  outline-offset:3px;
+  border-radius:4px;
+}
+.sec--noite :focus-visible{ outline-color:var(--amarelo); }
+
+/* ---------- estrutura ---------- */
+.wrap{
+  width:100%;
+  max-width:1080px;
+  margin-inline:auto;
+  padding-inline:clamp(20px,5vw,40px);
+}
+
+.sec{
+  position:relative;
+  padding-block:clamp(64px,9vw,110px);
+}
+.sec--atracoes,
+.sec--palco,
+.rodape{ padding-top:clamp(110px,13vw,168px); }
+
+.sec--noite{ background:var(--noite); color:var(--papel); }
+.sec--noite::before{
+  content:""; position:absolute; inset:0; pointer-events:none;
+  background-image:
+    radial-gradient(2px 2px at 12% 18%, rgba(255,240,200,.7), transparent),
+    radial-gradient(1.5px 1.5px at 78% 12%, rgba(255,240,200,.55), transparent),
+    radial-gradient(2px 2px at 62% 34%, rgba(255,240,200,.45), transparent),
+    radial-gradient(1.5px 1.5px at 32% 62%, rgba(255,240,200,.4), transparent),
+    radial-gradient(2px 2px at 88% 72%, rgba(255,240,200,.5), transparent),
+    radial-gradient(1.5px 1.5px at 8% 84%, rgba(255,240,200,.35), transparent);
+}
+.sec--noite > .wrap{ position:relative; z-index:1; }
+
+/* ---------- tipografia ---------- */
+.sobrelinha{
+  margin:0 0 .6rem;
+  font-size:.8125rem;
+  font-weight:800;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--vermelho);
+}
+.sobrelinha--clara{ color:var(--amarelo); }
+.sobrelinha--centro{ text-align:center; }
+.sobrelinha--mao{
+  font-family:var(--f-mao);
+  font-size:clamp(1.3rem,3.4vw,1.75rem);
+  font-weight:700;
+  letter-spacing:0;
+  text-transform:none;
+  color:var(--verde);
+}
+
+.mao{
+  font-family:var(--f-mao);
+  font-size:clamp(1.4rem,3.6vw,1.9rem);
+  font-weight:700;
+  line-height:1.25;
+  color:var(--vermelho);
+}
+
+.titulo{
+  font-family:var(--f-display);
+  font-weight:400;
+  font-size:clamp(2rem,5.4vw,3.5rem);
+  line-height:1.05;
+  letter-spacing:.005em;
+  margin:0 0 1.25rem;
+  text-shadow:3px 3px 0 var(--amarelo);
+}
+.titulo--centro{ text-align:center; margin-bottom:clamp(2rem,5vw,3.25rem); }
+.titulo--claro{ color:var(--papel); text-shadow:3px 3px 0 var(--vermelho); }
+
+/* placa pintada à mão do hero */
+.placa{
+  margin:.2rem 0 1.5rem;
+  font-family:var(--f-display);
+  font-weight:400;
+  font-size:clamp(3.4rem,15.5vw,9.5rem);
+  line-height:.86;
+  letter-spacing:-.005em;
+  text-transform:uppercase;
+  display:flex; flex-direction:column; align-items:flex-start;
+}
+.placa__l1,
+.placa__l2{ display:block; transform-origin:left center; }
+.placa__l1{
+  color:var(--vermelho);
+  transform:rotate(-1.6deg);
+  text-shadow:5px 5px 0 var(--tinta);
+}
+.placa__l2{
+  color:var(--azul);
+  transform:rotate(1.1deg);
+  margin-left:.06em;
+  text-shadow:5px 5px 0 var(--amarelo);
+}
+
+/* ---------- varal de bandeirinhas (elemento assinatura) ---------- */
+.varal{
+  position:absolute;
+  inset-inline:0;
+  top:0;
+  height:var(--varal-h);
+  z-index:5;
+  pointer-events:none;
+  --sway:0deg;                 /* atualizado pelo scroll no script.js */
+}
+.varal svg{ display:block; width:100%; height:100%; overflow:visible; }
+.varal .corda{ fill:none; stroke:var(--tinta); stroke-width:3; }
+.varal--noite .corda,
+.varal--rodape .corda{ stroke:var(--papel-2); }
+.varal .bandeira{
+  stroke:var(--tinta);
+  stroke-width:2.5;
+  stroke-linejoin:round;
+  transform-box:fill-box;
+  transform-origin:top center;
+  animation:balanca 3.4s ease-in-out infinite alternate;
+}
+.varal--noite .bandeira,
+.varal--rodape .bandeira{ stroke:var(--noite); }
+
+@keyframes balanca{
+  from{ transform:rotate(calc(-2.2deg + var(--sway))); }
+  to  { transform:rotate(calc( 2.2deg + var(--sway))); }
+}
+
+/* ---------- hero ---------- */
+.hero{
+  padding-top:clamp(130px,17vw,200px);
+  padding-bottom:clamp(56px,8vw,90px);
+  background:
+    radial-gradient(120% 80% at 78% 8%, var(--papel-2), transparent 62%),
+    var(--papel);
+  overflow:hidden;
+}
+.hero__wrap{ position:relative; z-index:1; }
+.hero__lead{
+  max-width:34ch;
+  font-size:clamp(1.05rem,2.3vw,1.3rem);
+  margin:0 0 2rem;
+}
+
+/* ficha de dados: quatro tiras de papel */
+.ficha{
+  list-style:none;
+  margin:0 0 2rem;
+  padding:0;
+  display:grid;
+  gap:.75rem;
+  grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+  max-width:760px;
+}
+.ficha li{
+  background:#fff;
+  border:var(--linha) solid var(--tinta);
+  border-radius:var(--raio);
+  padding:.85rem 1rem;
+  box-shadow:5px 5px 0 var(--amarelo);
+}
+.ficha li.ficha--free{ box-shadow:5px 5px 0 var(--verde); }
+.ficha__rot{
+  display:block;
+  font-size:.6875rem; font-weight:800;
+  letter-spacing:.16em; text-transform:uppercase;
+  color:var(--vermelho);
+}
+.ficha strong{
+  display:block;
+  font-family:var(--f-display); font-weight:400;
+  font-size:1.35rem; line-height:1.2; margin-block:.15rem;
+}
+.ficha__nota{
+  display:block;
+  font-size:.8125rem; opacity:.7;
+}
+
+/* selos do hero — uma linha emoldurada por informação que não pode passar batida */
+.selo-linha{
+  display:flex; align-items:center; gap:.75rem;
+  max-width:46ch;
+  margin:0 0 .85rem;
+  padding:.7rem 1rem;
+  background:#fff;
+  border:var(--linha) solid var(--tinta);
+  border-radius:var(--raio);
+  font-size:.95rem; line-height:1.45;
+  color:var(--tinta); text-decoration:none;
+}
+.selo-linha__ico{
+  width:34px; height:34px; flex:none;
+  fill:none; stroke-width:3.4;
+  stroke-linecap:round; stroke-linejoin:round;
+}
+/* a doação, em azul — a cor de Nossa Senhora das Graças. É o último selo do
+   hero, então é ele que abre espaço até a ficha do evento. */
+.selo-causa{
+  margin-bottom:2rem;
+  box-shadow:5px 5px 0 var(--azul);
+}
+.selo-causa .selo-linha__ico{ stroke:var(--azul); }
+.selo-causa strong{ color:var(--azul); }
+
+/* a música ao vivo, em vermelho. É link: leva pra seção do palco. */
+.selo-musica{
+  box-shadow:5px 5px 0 var(--vermelho);
+  transition:transform .15s ease, box-shadow .15s ease;
+}
+.selo-musica .selo-linha__ico{ stroke:var(--vermelho); }
+.selo-musica strong{ color:var(--vermelho); }
+.selo-musica:hover{ transform:translate(-2px,-2px); box-shadow:8px 8px 0 var(--vermelho); }
+
+/* contagem regressiva — placa emoldurada, o destaque do hero */
+.contagem{ margin:0 0 2rem; }
+.contagem--destaque{
+  /* block + fit-content: a placa encolhe até o conteúdo, mas continua
+     ocupando a linha toda — o botão logo abaixo não sobe pro lado dela. */
+  display:block;
+  width:fit-content;
+  max-width:100%;
+  padding:1.15rem clamp(1rem,3vw,1.6rem) 1.25rem;
+  background:#fff;
+  border:var(--linha) solid var(--tinta);
+  border-radius:var(--raio);
+  box-shadow:8px 8px 0 var(--vermelho);
+}
+.contagem__rot{
+  margin:0 0 .65rem;
+  font-family:var(--f-mao);
+  font-size:clamp(1.5rem,4vw,2.1rem); font-weight:700;
+  line-height:1.1;
+  color:var(--vermelho);
+}
+.contagem__blocos{ display:flex; flex-wrap:wrap; gap:clamp(.5rem,1.6vw,.85rem); }
+.bloco{
+  min-width:clamp(76px,17vw,104px);
+  text-align:center;
+  background:var(--tinta);
+  color:var(--papel);
+  border:var(--linha) solid var(--tinta);
+  border-radius:12px;
+  padding:.55rem .7rem .5rem;
+  box-shadow:4px 4px 0 var(--cor,var(--amarelo));
+}
+.bloco b{
+  display:block;
+  font-family:var(--f-display); font-weight:400;
+  font-size:clamp(2.1rem,6.2vw,3.15rem); line-height:1.02;
+  font-variant-numeric:tabular-nums;
+  color:var(--cor,var(--amarelo));
+}
+.bloco i{
+  display:block;
+  font-style:normal;
+  margin-top:.2rem;
+  font-size:.6875rem; font-weight:800;
+  letter-spacing:.14em; text-transform:uppercase;
+  opacity:.85;
+}
+.contagem__pe{
+  margin:.85rem 0 0;
+  font-size:.75rem; font-weight:800;
+  letter-spacing:.16em; text-transform:uppercase;
+  color:var(--tinta); opacity:.6;
+}
+.contagem--fim .contagem__blocos,
+.contagem--fim .contagem__pe{ display:none; }
+.contagem--fim .contagem__rot{
+  max-width:30ch;
+  margin:0;
+  font-size:clamp(1.5rem,3.6vw,2rem);
+  color:var(--vermelho);
+}
+
+/* ---------- botão ---------- */
+.botao{
+  display:inline-flex; align-items:center; gap:.6rem;
+  background:var(--vermelho); color:#fff;
+  font-family:var(--f-corpo); font-weight:800;
+  font-size:1.05rem; text-decoration:none;
+  padding:.9rem 1.5rem;
+  border:var(--linha) solid var(--tinta);
+  border-radius:999px;
+  box-shadow:5px 5px 0 var(--tinta);
+  transition:transform .15s ease, box-shadow .15s ease;
+}
+.botao--grande{ font-size:clamp(1.05rem,2.2vw,1.2rem); padding:1rem 1.9rem; }
+.botao--claro{ background:var(--amarelo); color:var(--tinta); box-shadow:5px 5px 0 var(--papel-2); }
+.botao:hover{ transform:translate(-2px,-2px); box-shadow:8px 8px 0 var(--tinta); }
+.botao--claro:hover{ box-shadow:8px 8px 0 var(--papel-2); }
+.botao:active{ transform:translate(2px,2px); box-shadow:2px 2px 0 var(--tinta); }
+.botao__ico{
+  width:22px; height:22px; flex:none;
+  fill:none; stroke:currentColor; stroke-width:2; stroke-linejoin:round;
+}
+
+/* ---------- o convite ---------- */
+.sec--convite{ background:var(--papel-2); }
+.convite{
+  display:grid; gap:clamp(2rem,5vw,3.5rem);
+  grid-template-columns:1fr;
+  align-items:center;
+}
+.convite__texto p{ max-width:48ch; }
+.mao--assinatura{ margin-top:1.5rem; }
+.arte-fogueira{ width:min(100%,260px); margin-inline:auto; }
+.arte-fogueira use{ fill:none; stroke:var(--tinta); stroke-width:3.2; stroke-linecap:round; stroke-linejoin:round; }
+
+/* ---------- como foi em 2025 ----------
+   O mural alinha o vídeo e a foto retrato pela matemática das colunas:
+   vídeo 9:16 em 3fr  →  altura 3u × 16/9 = 5.333u
+   foto  3:4  em 4fr  →  altura 4u ×  4/3 = 5.333u
+   Ou seja: topo e base batem em qualquer largura de tela, sem altura fixa. */
+.mural{
+  display:grid;
+  gap:clamp(1.25rem,3vw,2rem);
+  grid-template-columns:1fr;
+  justify-items:center;
+  margin-bottom:clamp(1.25rem,3vw,2rem);
+}
+
+.filme,
+.retrato,
+.mural__faixa{
+  margin:0;
+  width:100%;
+}
+.filme__quadro{ position:relative; }
+.filme__video,
+.retrato img,
+.mural__faixa img{
+  display:block;
+  width:100%; height:100%;
+  background:var(--noite-2);
+  border:var(--linha) solid var(--amarelo);
+  border-radius:var(--raio);
+  box-shadow:8px 8px 0 rgba(0,0,0,.4);
+  object-fit:cover;
+}
+.filme__video{ aspect-ratio:9/16; }
+.retrato img{ aspect-ratio:3/4; }
+.mural__faixa img{ aspect-ratio:3/2; object-position:center 62%; }
+
+.filme figcaption,
+.retrato figcaption,
+.mural__faixa figcaption{
+  margin-top:.7rem;
+  font-family:var(--f-mao);
+  font-size:1.2rem;
+  text-align:center;
+  color:var(--amarelo); opacity:.85;
+}
+
+/* botão de play por cima do poster. Sai de cena quando o vídeo começa,
+   liberando os controles nativos do navegador. */
+.filme__play{
+  position:absolute;
+  inset:0;
+  display:grid; place-content:center;
+  gap:.5rem;
+  background:rgba(23,34,59,.32);
+  border:none;
+  border-radius:var(--raio);
+  color:var(--papel);
+  font-family:var(--f-corpo); font-weight:800;
+  font-size:.8125rem; letter-spacing:.16em; text-transform:uppercase;
+  text-shadow:2px 2px 0 rgba(0,0,0,.6);
+  cursor:pointer;
+  transition:background .18s ease;
+}
+.filme__play svg{
+  width:clamp(58px,13vw,76px); height:clamp(58px,13vw,76px);
+  justify-self:center;
+  fill:var(--amarelo);
+  stroke:var(--tinta); stroke-width:3; stroke-linejoin:round;
+  filter:drop-shadow(4px 4px 0 rgba(0,0,0,.45));
+}
+.filme__play:hover{ background:rgba(23,34,59,.12); }
+.filme--tocando .filme__play{ display:none; }
+
+.mural__nota p{ margin:0; }
+.mural__nota .mao{ margin-bottom:.5rem; color:var(--amarelo); }
+.mural__nota{ max-width:42ch; opacity:.92; }
+
+/* ---------- grade de atrações ---------- */
+.grade{
+  list-style:none; margin:0; padding:0;
+  display:grid; gap:clamp(1rem,2.4vw,1.5rem);
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+}
+.card{
+  background:#fff;
+  border:var(--linha) solid var(--tinta);
+  border-radius:var(--raio);
+  padding:1.35rem 1.35rem 1.5rem;
+  box-shadow:6px 6px 0 var(--cor,var(--amarelo));
+  transition:transform .18s ease, box-shadow .18s ease;
+}
+.card:hover{ transform:translate(-3px,-3px); box-shadow:9px 9px 0 var(--cor,var(--amarelo)); }
+.card__ico{
+  width:56px; height:56px; display:block; margin-bottom:.7rem;
+  fill:none; stroke:var(--tinta); stroke-width:3;
+  stroke-linecap:round; stroke-linejoin:round;
+}
+.card h3{
+  margin:0 0 .35rem;
+  font-family:var(--f-display); font-weight:400;
+  font-size:1.25rem; line-height:1.2;
+}
+.card p{ margin:0; font-size:.95rem; }
+
+/* ---------- música ao vivo ---------- */
+.palco__cabeca{ text-align:center; }
+.palco__marca{
+  width:clamp(64px,13vw,86px); height:clamp(64px,13vw,86px);
+  margin:0 auto .9rem;
+  display:block;
+  fill:none; stroke:var(--amarelo); stroke-width:3;
+  stroke-linecap:round; stroke-linejoin:round;
+}
+.palco__lead{
+  max-width:48ch;
+  margin:-.5rem auto 0;
+  opacity:.92;
+}
+/* faixa de três selos: o resumo da noite antes de detalhar cada atração */
+.palco__faixa{
+  list-style:none; margin:1.5rem 0 0; padding:0;
+  display:flex; flex-wrap:wrap; justify-content:center;
+  gap:.5rem .6rem;
+}
+.palco__faixa li{
+  padding:.4rem .9rem;
+  border:2px solid var(--amarelo);
+  border-radius:999px;
+  font-size:.75rem; font-weight:800;
+  letter-spacing:.14em; text-transform:uppercase;
+  color:var(--amarelo);
+}
+
+/* uma atração por bloco largo, com a foto trocando de lado */
+.palco{
+  display:grid;
+  gap:clamp(2.75rem,7vw,4.5rem);
+  margin-top:clamp(2.5rem,6vw,4rem);
+}
+.ato{
+  display:grid;
+  gap:clamp(1.25rem,3.5vw,2.5rem);
+  grid-template-columns:1fr;
+  align-items:center;
+}
+/* Placa branca: as duas fotos são de estúdio de fundo claro, então a placa
+   funciona como extensão do fundo delas em vez de brigar com o azul-noite.
+   A imagem entra na proporção do arquivo (height:auto) — nada de recorte. */
+.ato__foto{
+  margin:0;
+  background:#fff;
+  border:var(--linha) solid var(--amarelo);
+  border-radius:var(--raio);
+  box-shadow:8px 8px 0 rgba(0,0,0,.4);
+  overflow:hidden;
+}
+.ato__foto img{
+  width:100%; height:auto;
+  display:block;
+}
+.ato__ordem{
+  display:inline-block;
+  margin:0 0 .7rem;
+  padding:.3rem .8rem;
+  background:var(--amarelo);
+  color:var(--tinta);
+  border-radius:999px;
+  font-size:.6875rem; font-weight:800;
+  letter-spacing:.14em; text-transform:uppercase;
+}
+.ato__tag{
+  margin:0;
+  font-size:.8125rem; font-weight:800;
+  letter-spacing:.16em; text-transform:uppercase;
+  color:var(--amarelo);
+}
+.ato__nome{
+  margin:.2rem 0 .6rem;
+  font-family:var(--f-display); font-weight:400;
+  font-size:clamp(1.9rem,5vw,2.9rem); line-height:1.08;
+  color:var(--papel);
+  text-shadow:3px 3px 0 var(--vermelho);
+}
+.ato__desc{ margin:0; max-width:46ch; opacity:.9; }
+
+/* ---------- área kids ---------- */
+.sec--kids{ background:var(--verde); color:#fff; }
+.kids{
+  display:grid; gap:clamp(1.5rem,4vw,3rem);
+  grid-template-columns:1fr;
+  align-items:center;
+}
+.kids .sobrelinha{ color:var(--amarelo); }
+.kids .titulo{ color:#fff; text-shadow:3px 3px 0 var(--tinta); }
+.kids__texto p{ max-width:48ch; }
+.kids__texto strong{ color:var(--amarelo); }
+.arte-catavento{ width:min(100%,190px); margin-inline:auto; }
+.arte-catavento use{ fill:none; stroke:#fff; stroke-width:3.4; stroke-linecap:round; stroke-linejoin:round; }
+
+/* ---------- a causa ---------- */
+.sec--causa{ background:var(--azul); color:#fff; }
+.causa{
+  display:grid;
+  gap:clamp(1.5rem,4vw,3rem);
+  grid-template-columns:1fr;
+  align-items:center;
+}
+.causa .titulo{ color:#fff; text-shadow:3px 3px 0 var(--tinta); }
+.causa__texto p{ max-width:50ch; }
+.causa__texto strong{ color:var(--amarelo); }
+.causa__forte{
+  margin-block:1.25rem;
+  padding:1rem 1.15rem;
+  background:rgba(255,255,255,.1);
+  border-left:6px solid var(--amarelo);
+  border-radius:0 var(--raio) var(--raio) 0;
+  font-size:clamp(1.05rem,2.4vw,1.25rem);
+  font-weight:600;
+}
+.arte-igreja{ width:min(100%,210px); margin-inline:auto; }
+.arte-igreja use{
+  fill:none; stroke:#fff; stroke-width:3.2;
+  stroke-linecap:round; stroke-linejoin:round;
+}
+
+/* carimbo redondo */
+.selo{
+  display:grid; place-content:center; align-content:center;
+  width:clamp(118px,26vw,150px); aspect-ratio:1;
+  margin:0 auto;
+  text-align:center;
+  color:var(--amarelo);
+  border:4px solid var(--amarelo);
+  border-radius:50%;
+  transform:rotate(-9deg);
+}
+.selo__num{
+  display:block;
+  font-family:var(--f-display); font-weight:400;
+  font-size:clamp(1.9rem,5vw,2.5rem); line-height:1;
+}
+.selo__txt{
+  display:block;
+  margin-top:.2rem;
+  font-size:.6875rem; font-weight:800;
+  letter-spacing:.16em; text-transform:uppercase;
+}
+
+/* ---------- patrocinadores ---------- */
+.sec--patros{ background:var(--papel-2); }
+.patros__lead{
+  max-width:52ch;
+  margin:-1rem auto clamp(2rem,5vw,2.75rem);
+  text-align:center;
+}
+.patros{
+  list-style:none; margin:0; padding:0;
+  display:grid; gap:clamp(.85rem,2vw,1.25rem);
+  grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+}
+/* Placa branca com respiro: os logos têm fundos diferentes (branco, preto,
+   vermelho) e entram inteiros, sem recorte nem distorção. */
+.patros__item{
+  display:grid; place-items:center;
+  aspect-ratio:3/2;
+  padding:.9rem;
+  background:#fff;
+  border:var(--linha) solid var(--tinta);
+  border-radius:var(--raio);
+  box-shadow:5px 5px 0 var(--amarelo);
+  transition:transform .18s ease, box-shadow .18s ease;
+}
+.patros__item:hover{ transform:translate(-3px,-3px); box-shadow:8px 8px 0 var(--amarelo); }
+.patros__item img{
+  width:100%; height:100%;
+  object-fit:contain;
+}
+.patros__pe{
+  margin:clamp(1.75rem,4vw,2.5rem) 0 0;
+  text-align:center;
+}
+
+/* ---------- onde e quando ---------- */
+.onde{
+  display:grid; gap:clamp(1.5rem,4vw,2.5rem);
+  grid-template-columns:1fr;
+  max-width:900px; margin-inline:auto;
+}
+.onde__dados{
+  margin:0;
+  display:grid; gap:1px;
+  background:rgba(255,243,220,.25);
+  border:var(--linha) solid var(--amarelo);
+  border-radius:var(--raio);
+  overflow:hidden;
+}
+.onde__dados > div{ background:var(--noite); padding:1rem 1.2rem; }
+.onde__dados dt{
+  font-size:.6875rem; font-weight:800;
+  letter-spacing:.16em; text-transform:uppercase;
+  color:var(--amarelo);
+}
+.onde__dados dd{
+  margin:.2rem 0 0;
+  font-family:var(--f-display); font-weight:400;
+  font-size:1.2rem; line-height:1.3;
+}
+.onde__end{
+  display:block;
+  font-family:var(--f-corpo); font-size:.9rem; font-weight:400;
+  opacity:.7;
+}
+.avisos{
+  list-style:none; margin:0; padding:0;
+  display:grid; gap:.85rem; align-content:start;
+}
+.avisos li{
+  position:relative;
+  padding-left:1.9rem;
+  font-size:.98rem;
+  opacity:.92;
+}
+.avisos li::before{
+  content:"";
+  position:absolute; left:0; top:.45em;
+  width:13px; height:13px;
+  background:var(--amarelo);
+  clip-path:polygon(50% 0,100% 0,50% 100%,0 0);
+}
+/* ---------- mapa ---------- */
+.mapa{
+  margin:clamp(2rem,5vw,3rem) auto 0;
+  max-width:900px;
+}
+.mapa__quadro{
+  display:grid; place-items:center; align-content:center;
+  gap:.35rem;
+  aspect-ratio:16/9;
+  padding:1.5rem;
+  text-align:center;
+  background:
+    repeating-linear-gradient(45deg, rgba(255,197,49,.07) 0 12px, transparent 12px 24px),
+    var(--noite-2);
+  border:var(--linha) solid var(--amarelo);
+  border-radius:var(--raio);
+  overflow:hidden;
+}
+.mapa__pin{
+  width:52px; height:52px;
+  fill:none; stroke:var(--amarelo); stroke-width:1.6; stroke-linejoin:round;
+}
+.mapa__local{
+  margin:.35rem 0 0;
+  font-family:var(--f-display); font-weight:400;
+  font-size:clamp(1.3rem,3.4vw,1.75rem); line-height:1.2;
+  color:var(--papel);
+}
+.mapa__end{ margin:0 0 1rem; font-size:.95rem; opacity:.8; }
+.mapa__frame{
+  display:block;
+  width:100%; height:100%;
+  border:0;
+}
+/* Com o iframe dentro, o quadro deixa de ser cartaz e vira só moldura. */
+.mapa--aberto .mapa__quadro{
+  display:block;
+  padding:0;
+  background:var(--noite-2);
+}
+.mapa__nota{
+  margin:.7rem 0 0;
+  font-size:.8125rem;
+  text-align:center;
+  opacity:.65;
+}
+
+.onde__cta{ text-align:center; margin:clamp(1.75rem,4vw,2.5rem) 0 0; }
+
+/* ---------- rodapé ---------- */
+.rodape{
+  position:relative;
+  background:var(--vermelho);
+  color:#fff;
+  padding-bottom:clamp(48px,7vw,72px);
+  text-align:center;
+}
+.rodape__marca{
+  margin:0;
+  font-family:var(--f-display); font-weight:400;
+  font-size:clamp(1.8rem,5vw,2.6rem);
+  text-transform:uppercase;
+  text-shadow:3px 3px 0 var(--tinta);
+}
+.rodape__data{ margin:.4rem 0 0; font-weight:600; }
+.rodape__org{ margin:1rem 0 0; font-size:.95rem; }
+.rodape__org strong{ color:var(--amarelo); }
+.rodape__causa{
+  max-width:46ch;
+  margin:.5rem auto 0;
+  font-size:.9rem;
+  opacity:.9;
+}
+.rodape__mao{ margin:1.25rem 0 0; color:var(--amarelo); }
+
+/* ---------- revelação no scroll ----------
+   O --tilt entra no mesmo transform da revelação: quem quiser ficar torto
+   (as fotos do mural) declara --tilt e a inclinação sobrevive à animação. */
+[data-reveal]{
+  opacity:0;
+  transform:translateY(22px) rotate(var(--tilt,0deg));
+  transition:opacity .6s ease, transform .6s cubic-bezier(.2,.7,.3,1);
+}
+[data-reveal].visivel{ opacity:1; transform:rotate(var(--tilt,0deg)); }
+
+/* ---------- celular: o mural vira pilha ---------- */
+@media (max-width:639px){
+  .filme{ max-width:320px; }
+  .retrato{ max-width:420px; }
+  /* A foto do Lucas tem só 432px de largura no arquivo: segurar o tamanho
+     aqui evita que ela seja esticada além do que a resolução aguenta. */
+  .ato__foto{ max-width:400px; margin-inline:auto; }
+  .ato__texto{ text-align:center; }
+  .ato__desc{ margin-inline:auto; }
+  /* Na vertical o celular já é estreito: a foto larga entra inteira,
+     sem o recorte 3:2 que só faz sentido na faixa do desktop. */
+  .mural__faixa img{ aspect-ratio:4/3; object-position:center; }
+}
+
+/* ---------- telas médias ---------- */
+@media (min-width:640px){
+  .mural{
+    grid-template-columns:3fr 4fr;   /* 9:16 e 3:4 fecham na mesma altura */
+    align-items:start;
+    justify-items:stretch;
+  }
+  .mural__nota{ grid-column:1 / -1; max-width:60ch; }
+  .filme{ --tilt:-1.2deg; }
+  .retrato{ --tilt:1.2deg; }
+}
+
+/* ---------- telas maiores ---------- */
+@media (min-width:820px){
+  .convite{ grid-template-columns:1.35fr .65fr; }
+  .kids{ grid-template-columns:.55fr 1.45fr; }
+  .causa{ grid-template-columns:.5fr 1.5fr; }
+  .onde{ grid-template-columns:1.1fr .9fr; }
+  .onde__dados{ grid-template-columns:1fr 1fr; }
+
+  /* A foto troca de lado por grid-column, não por order: assim a ordem de
+     leitura e a de tabulação seguem 1ª atração → 2ª atração. */
+  .ato{ grid-template-columns:minmax(0,340px) minmax(0,1fr); }
+  .ato--par{ grid-template-columns:minmax(0,1fr) minmax(0,340px); }
+  .ato--par .ato__foto{ grid-column:2; grid-row:1; }
+  .ato--par .ato__texto{ grid-column:1; grid-row:1; }
+}
+
+@media (min-width:900px){
+  .mural{
+    grid-template-columns:3fr 4fr 2.6fr;
+    align-items:center;
+  }
+  .mural__nota{ grid-column:auto; max-width:none; }
+  .causa{ grid-template-columns:.45fr 1.35fr .5fr; }
+  .selo{ margin:0; }
+}
+
+/* ---------- telas pequenas ---------- */
+@media (max-width:420px){
+  :root{ --varal-h:88px; --linha:2.5px; }
+  .bloco{ min-width:68px; padding:.45rem .4rem; }
+  .botao{ width:100%; justify-content:center; }
+  .placa__l1{ text-shadow:3px 3px 0 var(--tinta); }
+  .placa__l2{ text-shadow:3px 3px 0 var(--amarelo); }
+  .contagem--destaque{ width:auto; box-shadow:5px 5px 0 var(--vermelho); }
+  .mapa__quadro{ aspect-ratio:4/5; }
+}
+
+/* ---------- movimento reduzido ---------- */
+@media (prefers-reduced-motion:reduce){
+  html{ scroll-behavior:auto; }
+  .varal .bandeira{ animation:none; }
+  [data-reveal]{ opacity:1; transform:none; transition:none; }
+  .botao,.card,.patros__item,.filme__play,.selo-musica{ transition:none; }
+  .filme,.retrato{ --tilt:0deg; }
+}

@@ -1,0 +1,480 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Arraiá Riviera — 8 de agosto de 2026, Praça do Bosque</title>
+<meta name="description" content="Forró ao vivo, fogueira de São João, quadrilha, comidas típicas e área kids. Sábado, 8 de agosto de 2026, a partir das 18h, na Praça do Bosque, em Colatina/ES. Entrada gratuita. Realização dos Amigos do Riviera: toda a renda vai para a construção da Igreja Nossa Senhora das Graças.">
+<meta name="theme-color" content="#FFF3DC">
+
+<!-- EDITAR: troque a og:image pela URL absoluta depois que a Vercel gerar o
+     domínio, senão o WhatsApp não carrega a miniatura. -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Arraiá Riviera — 8 de agosto, Praça do Bosque">
+<meta property="og:description" content="Forró, fogueira, quadrilha e área kids. Entrada gratuita e toda a renda para a construção da Igreja Nossa Senhora das Graças.">
+<meta property="og:image" content="assets/imagens/foto2.jpeg">
+<meta property="og:locale" content="pt_BR">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Caveat:wght@600;700&family=Nunito:wght@400;600;800&display=swap">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<a class="pular" href="#conteudo">Pular para o conteúdo</a>
+
+<!-- ============ Sprite de ícones (xilogravura) ============ -->
+<svg class="sprite" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="i-milho" viewBox="0 0 64 64">
+      <path d="M34 5c9 0 14 10 14 21s-5 22-14 22-14-11-14-22S25 5 34 5Z"/>
+      <path d="M34 8v37M26 16h16M25 25h18M25 34h18M27 43h14"/>
+      <path d="M20 33C10 35 5 43 7 52c9 2 16-3 17-12"/>
+    </symbol>
+    <symbol id="i-caneca" viewBox="0 0 64 64">
+      <path d="M12 26h30v22a6 6 0 0 1-6 6H18a6 6 0 0 1-6-6Z"/>
+      <path d="M42 32h5a8 8 0 0 1 0 16h-5"/>
+      <path d="M20 18c0-5 5-4 5-9M31 18c0-5 5-4 5-9"/>
+    </symbol>
+    <symbol id="i-copo" viewBox="0 0 64 64">
+      <path d="M19 24h26l-3 30a4 4 0 0 1-4 4H26a4 4 0 0 1-4-4Z"/>
+      <path d="M17 24c1-7 7-11 15-11s14 4 15 11"/>
+      <path d="M21 36h22"/>
+      <circle cx="29" cy="44" r="2.6"/><circle cx="37" cy="49" r="2.2"/>
+    </symbol>
+    <symbol id="i-roleta" viewBox="0 0 64 64">
+      <circle cx="32" cy="36" r="21"/>
+      <path d="M32 15v42M11 36h42M17 21l30 30M47 21 17 51"/>
+      <circle cx="32" cy="36" r="4"/>
+      <path d="M32 4l6 10H26Z"/>
+    </symbol>
+    <symbol id="i-catavento" viewBox="0 0 64 64">
+      <path d="M32 28 32 8Q48 8 48 20Z"/>
+      <path d="M32 28 32 8Q48 8 48 20Z" transform="rotate(90 32 28)"/>
+      <path d="M32 28 32 8Q48 8 48 20Z" transform="rotate(180 32 28)"/>
+      <path d="M32 28 32 8Q48 8 48 20Z" transform="rotate(270 32 28)"/>
+      <circle cx="32" cy="28" r="3.5"/>
+      <path d="M32 32v26"/>
+    </symbol>
+    <symbol id="i-casal" viewBox="0 0 64 64">
+      <circle cx="18" cy="12" r="6"/>
+      <path d="M18 18v14M18 32l-6 20M18 32l6 20M18 24h28"/>
+      <circle cx="46" cy="12" r="6"/>
+      <path d="M46 18v12"/>
+      <path d="M34 54h24L46 30Z"/>
+    </symbol>
+    <symbol id="i-chapeu" viewBox="0 0 64 64">
+      <path d="M5 44c0-5 12-9 27-9s27 4 27 9-12 9-27 9S5 49 5 44Z"/>
+      <path d="M17 43c0-16 4-25 15-25s15 9 15 25"/>
+      <path d="M17 36c4 2 9 3 15 3s11-1 15-3"/>
+    </symbol>
+    <symbol id="i-fogueira" viewBox="0 0 64 64">
+      <path d="M8 55 56 41M56 55 8 41"/>
+      <path d="M32 4c5 9 1 13 5 17 2-2 2-6 2-6 5 6 7 12 7 17a14 14 0 0 1-28 0c0-8 6-13 8-18 1 4 3 5 3 5 0-7 2-11 3-15Z"/>
+    </symbol>
+    <symbol id="i-sanfona" viewBox="0 0 64 64">
+      <path d="M4 14h13v36H4zM47 14h13v36H47z"/>
+      <path d="M17 20h30v24H17z"/>
+      <path d="M23 20v24M29 20v24M35 20v24M41 20v24"/>
+      <circle cx="53.5" cy="24" r="2.2"/><circle cx="53.5" cy="32" r="2.2"/><circle cx="53.5" cy="40" r="2.2"/>
+    </symbol>
+    <symbol id="i-igreja" viewBox="0 0 64 64">
+      <path d="M32 3v11M27.5 7.5h9"/>
+      <path d="M20 27 32 15l12 12"/>
+      <path d="M23 27h18v31H23z"/>
+      <path d="M9 41l11-7v24H9zM55 41l-11-7v24h11z"/>
+      <path d="M28 45h8v13h-8z"/>
+      <circle cx="32" cy="36" r="3.2"/>
+      <path d="M4 58h56"/>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- ============ HERO ============ -->
+<header class="hero sec">
+  <div class="varal varal--hero" data-varal data-cores="vermelho,amarelo,verde,azul,laranja" aria-hidden="true"></div>
+
+  <div class="wrap hero__wrap">
+    <p class="sobrelinha sobrelinha--mao">Sábado, 8 de agosto — a praça é nossa</p>
+
+    <h1 class="placa">
+      <span class="placa__l1">Arraiá</span>
+      <span class="placa__l2">Riviera</span>
+    </h1>
+
+    <p class="hero__lead">
+      Uma noite de forró, fogueira e comida boa na Praça do Bosque.
+      Traga a família inteira: a entrada é de graça.
+    </p>
+
+    <a class="selo-linha selo-musica" href="#palco">
+      <svg class="selo-linha__ico" aria-hidden="true"><use href="#i-sanfona"/></svg>
+      <span>Música ao vivo com <strong>Cristian &amp; Anderson</strong> e <strong>Lucas Comério</strong></span>
+    </a>
+
+    <p class="selo-linha selo-causa">
+      <svg class="selo-linha__ico" aria-hidden="true"><use href="#i-igreja"/></svg>
+      <span>Toda a renda vai para a construção da <strong>Igreja Nossa Senhora das Graças</strong>, no Riviera.</span>
+    </p>
+
+    <ul class="ficha">
+      <li><span class="ficha__rot">Data</span><strong>08 · AGO · 2026</strong><span class="ficha__nota">sábado</span></li>
+      <li><span class="ficha__rot">Hora</span><strong>18h</strong><span class="ficha__nota">até a última música</span></li>
+      <li><span class="ficha__rot">Local</span><strong>Praça do Bosque</strong><span class="ficha__nota" data-cidade>—</span></li>
+      <li class="ficha--free"><span class="ficha__rot">Entrada</span><strong>Gratuita</strong><span class="ficha__nota">sem ingresso</span></li>
+    </ul>
+
+    <div class="contagem contagem--destaque" data-contagem>
+      <p class="contagem__rot" data-contagem-rot>Faltam</p>
+      <div class="contagem__blocos" data-contagem-blocos>
+        <span class="bloco" style="--cor:var(--vermelho)"><b data-d>--</b><i>dias</i></span>
+        <span class="bloco" style="--cor:var(--amarelo)"><b data-h>--</b><i>horas</i></span>
+        <span class="bloco" style="--cor:var(--verde)"><b data-m>--</b><i>min</i></span>
+        <span class="bloco" style="--cor:var(--azul)"><b data-s>--</b><i>seg</i></span>
+      </div>
+      <p class="contagem__pe">para a fogueira acender</p>
+    </div>
+
+    <a class="botao botao--grande" data-maps href="#onde">
+      Como chegar
+      <svg viewBox="0 0 24 24" aria-hidden="true" class="botao__ico"><path d="M12 22s8-7.6 8-13a8 8 0 1 0-16 0c0 5.4 8 13 8 13Z"/><circle cx="12" cy="9" r="3"/></svg>
+    </a>
+  </div>
+</header>
+
+<main id="conteudo">
+
+  <!-- ============ O CONVITE ============ -->
+  <section class="sec sec--convite" aria-labelledby="t-convite">
+    <div class="wrap convite">
+      <div class="convite__texto" data-reveal>
+        <p class="sobrelinha">O convite</p>
+        <h2 id="t-convite" class="titulo">Vem pra praça,<br>que a festa é sua</h2>
+        <p>
+          Todo mundo cabe num arraiá. Os pequenos correndo atrás do cata-vento, os avós
+          garantindo o melhor lugar perto da fogueira, e no meio disso tudo uma sanfona
+          tocando até tarde.
+        </p>
+        <p>
+          Não tem ingresso, não tem lista, não tem que levar nada além de fome e vontade
+          de dançar. É só chegar.
+        </p>
+        <p class="mao mao--assinatura">Te esperamos na fogueira.</p>
+      </div>
+      <div class="convite__arte" aria-hidden="true">
+        <svg viewBox="0 0 180 180" class="arte-fogueira">
+          <use href="#i-fogueira" x="10" y="10" width="160" height="160"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ COMO FOI EM 2025 ============ -->
+  <section class="sec sec--noite sec--galeria" aria-labelledby="t-galeria">
+    <div class="varal varal--noite" data-varal data-cores="verde,amarelo,vermelho,azul" aria-hidden="true"></div>
+    <div class="wrap">
+      <p class="sobrelinha sobrelinha--clara sobrelinha--centro">O arraiá do ano passado</p>
+      <h2 id="t-galeria" class="titulo titulo--claro titulo--centro">Como foi em 2025</h2>
+
+      <div class="mural">
+        <!-- O vídeo não toca sozinho: tem poster, controles nativos e o botão
+             de play por cima. Vertical 9:16, gravado na própria praça. -->
+        <figure class="filme" data-filme data-reveal>
+          <div class="filme__quadro">
+            <video
+              class="filme__video"
+              poster="assets/imagens/video1-poster.jpg"
+              preload="metadata"
+              playsinline
+              controls
+              width="576" height="1024">
+              <source src="assets/imagens/video1.mp4" type="video/mp4">
+              Seu navegador não abre este vídeo.
+            </video>
+            <button class="filme__play" type="button" data-filme-play
+                    aria-label="Dar play no vídeo do Arraiá Riviera 2025">
+              <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M24 17l26 15-26 15z"/></svg>
+              <span>Dar play</span>
+            </button>
+          </div>
+          <figcaption>A praça na noite do arraiá</figcaption>
+        </figure>
+
+        <figure class="retrato" data-reveal>
+          <img src="assets/imagens/foto1.jpeg" alt="Grupo de amigos posando com bebidas, doces e linguiça na noite do Arraiá Riviera de 2025, embaixo do varal de bandeirinhas"
+               width="960" height="1280" loading="lazy" decoding="async">
+          <figcaption>Quem chegou cedo garantiu a mesa</figcaption>
+        </figure>
+
+        <div class="mural__nota" data-reveal>
+          <p class="mao">Foi assim ano passado.</p>
+          <p>
+            A praça cheia até tarde, bandeirinha de ponta a ponta, mesa emendando
+            com mesa. Em 2026 a gente faz de novo — e queremos você numa dessas fotos.
+          </p>
+        </div>
+      </div>
+
+      <figure class="mural__faixa" data-reveal>
+        <img src="assets/imagens/foto2.jpeg" alt="Crianças vestidas de caipira, com chapéu de palha e vestidos de quadrilha, posando em frente ao palco do Arraiá Riviera de 2025"
+             width="1600" height="1200" loading="lazy" decoding="async">
+        <figcaption>A turma da quadrilha, pronta pra abrir a noite</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ============ ATRAÇÕES ============ -->
+  <section class="sec sec--atracoes" aria-labelledby="t-atracoes">
+    <div class="varal" data-varal data-cores="amarelo,vermelho,azul,verde" aria-hidden="true"></div>
+    <div class="wrap">
+      <p class="sobrelinha sobrelinha--centro">Da fogueira à sanfona</p>
+      <h2 id="t-atracoes" class="titulo titulo--centro">O que vai ter no arraiá</h2>
+
+      <ul class="grade">
+        <li class="card" data-reveal style="--cor:var(--amarelo)">
+          <svg class="card__ico" aria-hidden="true"><use href="#i-milho"/></svg>
+          <h3>Comidas típicas</h3><p>Prato cheio de comida de festa, do salgado ao doce.</p>
+        </li>
+        <li class="card" data-reveal style="--cor:var(--vermelho)">
+          <svg class="card__ico" aria-hidden="true"><use href="#i-caneca"/></svg>
+          <h3>Quentão</h3><p>Copo quente na mão pra espantar o frio de agosto.</p>
+        </li>
+        <li class="card" data-reveal style="--cor:var(--verde)">
+          <svg class="card__ico" aria-hidden="true"><use href="#i-copo"/></svg>
+          <h3>Cerveja gelada</h3><p>Gelada de verdade, pra quem prefere o contrário.</p>
+        </li>
+        <li class="card" data-reveal style="--cor:var(--azul)">
+          <svg class="card__ico" aria-hidden="true"><use href="#i-roleta"/></svg>
+          <h3>Roleta</h3><p>Gira, torce e leva. A sorte também é atração.</p>
+        </li>
+        <li class="card" data-reveal style="--cor:var(--laranja)">
+          <svg class="card__ico" aria-hidden="true"><use href="#i-catavento"/></svg>
+          <h3>Área Kids</h3><p>Com o Tio Wilsinho, brincadeira do começo ao fim.</p>
+        </li>
+        <li class="card" data-reveal style="--cor:var(--azul)">
+          <svg class="card__ico" aria-hidden="true"><use href="#i-casal"/></svg>
+          <h3>Dança da Catequese</h3><p>A turma da catequese mostra o que ensaiou.</p>
+        </li>
+        <li class="card" data-reveal style="--cor:var(--vermelho)">
+          <svg class="card__ico" aria-hidden="true"><use href="#i-chapeu"/></svg>
+          <h3>Quadrilha animada</h3><p>Olha a chuva! É mentira! Todo mundo na roda.</p>
+        </li>
+        <li class="card" data-reveal style="--cor:var(--laranja)">
+          <svg class="card__ico" aria-hidden="true"><use href="#i-fogueira"/></svg>
+          <h3>Fogueira de São João</h3><p>O ponto de encontro da noite inteira.</p>
+        </li>
+        <li class="card" data-reveal style="--cor:var(--verde)">
+          <svg class="card__ico" aria-hidden="true"><use href="#i-sanfona"/></svg>
+          <h3>Show ao vivo</h3><p>Cristian &amp; Anderson e Lucas Comério, na mesma noite.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ MÚSICA AO VIVO (vira noite) ============ -->
+  <section class="sec sec--noite sec--palco" id="palco" aria-labelledby="t-palco">
+    <div class="varal varal--noite" data-varal data-cores="amarelo,vermelho,verde,amarelo" aria-hidden="true"></div>
+    <div class="wrap">
+      <div class="palco__cabeca">
+        <svg class="palco__marca" aria-hidden="true"><use href="#i-sanfona"/></svg>
+        <p class="sobrelinha sobrelinha--clara sobrelinha--centro">Duas atrações no palco</p>
+        <h2 id="t-palco" class="titulo titulo--claro titulo--centro">Música ao vivo</h2>
+        <p class="palco__lead">
+          O palco não para a noite inteira: são duas atrações na mesma festa, uma emendando na outra,
+          até a praça pedir bis.
+        </p>
+        <ul class="palco__faixa">
+          <li>2 atrações</li>
+          <li>Sertanejo e forró</li>
+          <li>Até a última música</li>
+        </ul>
+      </div>
+
+      <div class="palco">
+        <!-- EDITAR: pra trocar a ordem das atrações, troque o par de classes
+             ato--impar / ato--par entre os dois <article>. -->
+        <article class="ato ato--impar" data-reveal>
+          <figure class="ato__foto">
+            <img src="assets/imagens/cristian-anderson.jpg"
+                 alt="Cristian &amp; Anderson, a dupla sertaneja, de camisa preta"
+                 width="900" height="717" loading="lazy" decoding="async">
+          </figure>
+          <div class="ato__texto">
+            <p class="ato__ordem">1ª atração</p>
+            <p class="ato__tag">Dupla sertaneja</p>
+            <h3 class="ato__nome">Cristian &amp; Anderson</h3>
+            <p class="ato__desc">
+              A dupla sobe no palco pra puxar o coro da praça. Sertanejo daquele tipo que ninguém
+              precisa saber a letra pra cantar junto — e no fim todo mundo canta.
+            </p>
+          </div>
+        </article>
+
+        <article class="ato ato--par" data-reveal>
+          <figure class="ato__foto">
+            <img src="assets/imagens/cantor-lucas-comerio.jpeg"
+                 alt="Lucas Comério de chapéu preto, com o microfone na mão"
+                 width="432" height="462" loading="lazy" decoding="async">
+          </figure>
+          <div class="ato__texto">
+            <p class="ato__ordem">2ª atração</p>
+            <p class="ato__tag">A Pegada do Forró</p>
+            <h3 class="ato__nome">Lucas Comério</h3>
+            <p class="ato__desc">
+              Sanfona, zabumba e a pista cheia até o fim. É a hora em que a quadrilha se desfaz e
+              a praça vira pista de forró — sem hora marcada pra acabar.
+            </p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ÁREA KIDS ============ -->
+  <section class="sec sec--kids" aria-labelledby="t-kids">
+    <div class="wrap kids">
+      <div class="kids__arte" aria-hidden="true">
+        <svg viewBox="0 0 160 160" class="arte-catavento"><use href="#i-catavento" x="16" y="16" width="128" height="128"/></svg>
+      </div>
+      <div class="kids__texto" data-reveal>
+        <p class="sobrelinha">Pros pequenos</p>
+        <h2 id="t-kids" class="titulo">Tem festa dentro da festa</h2>
+        <p>
+          A Área Kids fica por conta do <strong>Tio Wilsinho</strong>. Enquanto a criançada
+          brinca, você garante seu lugar na quadrilha — e ninguém vai embora cedo por causa
+          do "mãe, tô entediado".
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ A CAUSA ============ -->
+  <section class="sec sec--causa" aria-labelledby="t-causa">
+    <div class="varal" data-varal data-cores="amarelo,papel-2,amarelo,papel-2" aria-hidden="true"></div>
+    <div class="wrap causa">
+      <div class="causa__arte" aria-hidden="true">
+        <svg viewBox="0 0 180 180" class="arte-igreja">
+          <use href="#i-igreja" x="10" y="10" width="160" height="160"/>
+        </svg>
+      </div>
+
+      <div class="causa__texto" data-reveal>
+        <p class="sobrelinha sobrelinha--clara">Por que a festa existe</p>
+        <h2 id="t-causa" class="titulo titulo--claro">A festa é da comunidade,<br>e a renda também</h2>
+        <p>
+          O Arraiá Riviera é realizado pelos <strong>Amigos do Riviera</strong> — vizinhos
+          que se juntam, arregaçam a manga e montam a festa do começo ao fim.
+        </p>
+        <p class="causa__forte">
+          Todo valor arrecadado será doado integralmente à construção da
+          <strong>Igreja Nossa Senhora das Graças</strong>, no Riviera.
+        </p>
+        <p>
+          Cada copo de quentão, cada prato de comida e cada volta na roleta viram
+          tijolo. Você se diverte e a obra anda.
+        </p>
+      </div>
+
+      <p class="selo" aria-hidden="true">
+        <span class="selo__num">100%</span>
+        <span class="selo__txt">para a obra</span>
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ PATROCINADORES ============ -->
+  <section class="sec sec--patros" aria-labelledby="t-patros">
+    <div class="wrap">
+      <p class="sobrelinha sobrelinha--centro">Quem ajuda a levantar o arraiá</p>
+      <h2 id="t-patros" class="titulo titulo--centro">Nossos patrocinadores</h2>
+      <p class="patros__lead">
+        São eles que bancam a estrutura da festa — por isso a entrada pode ser
+        gratuita e a arrecadação vai inteira para a igreja.
+      </p>
+
+      <!-- EDITAR: pra incluir um patrocinador novo, coloque o logo em
+           assets/patrocinadores/ e copie um <li> destes, trocando src e alt. -->
+      <ul class="patros">
+        <li class="patros__item" data-reveal><img src="assets/patrocinadores/RR-engenharia.jpg" alt="RR Engenharia" width="1206" height="918" loading="lazy" decoding="async"></li>
+        <li class="patros__item" data-reveal><img src="assets/patrocinadores/nextcom.webp" alt="NEXTCON Engenharia" width="833" height="261" loading="lazy" decoding="async"></li>
+        <li class="patros__item" data-reveal><img src="assets/patrocinadores/brunetti.png" alt="Brunetti Implementos" width="1175" height="393" loading="lazy" decoding="async"></li>
+        <li class="patros__item" data-reveal><img src="assets/patrocinadores/george-veiculos.png" alt="George Veículos" width="1094" height="396" loading="lazy" decoding="async"></li>
+        <li class="patros__item" data-reveal><img src="assets/patrocinadores/george-motos.jpeg" alt="George Motos" width="225" height="225" loading="lazy" decoding="async"></li>
+        <li class="patros__item" data-reveal><img src="assets/patrocinadores/del-pietro.png" alt="Del Pietro Empreendimentos Imobiliários" width="740" height="408" loading="lazy" decoding="async"></li>
+        <li class="patros__item" data-reveal><img src="assets/patrocinadores/casa-design.jpeg" alt="Casa Design, com Márcia Krüger" width="225" height="225" loading="lazy" decoding="async"></li>
+        <li class="patros__item" data-reveal><img src="assets/patrocinadores/marilandia.jpeg" alt="Marilândia Comércio de Café" width="225" height="225" loading="lazy" decoding="async"></li>
+        <li class="patros__item" data-reveal><img src="assets/patrocinadores/capixaba-vassoura.jpg" alt="Vassouras Capixaba" width="646" height="646" loading="lazy" decoding="async"></li>
+        <li class="patros__item" data-reveal><img src="assets/patrocinadores/tonon.png" alt="Tonon" width="225" height="225" loading="lazy" decoding="async"></li>
+        <li class="patros__item" data-reveal><img src="assets/patrocinadores/nimbus.png" alt="Nimbus" width="224" height="224" loading="lazy" decoding="async"></li>
+        <li class="patros__item" data-reveal><img src="assets/patrocinadores/reklusa.png" alt="Reklusa" width="224" height="225" loading="lazy" decoding="async"></li>
+      </ul>
+
+      <p class="patros__pe mao">Quer apoiar o arraiá? Fale com os Amigos do Riviera.</p>
+    </div>
+  </section>
+
+  <!-- ============ ONDE E QUANDO ============ -->
+  <section class="sec sec--noite sec--onde" id="onde" aria-labelledby="t-onde">
+    <div class="wrap">
+      <p class="sobrelinha sobrelinha--clara sobrelinha--centro">Anota aí</p>
+      <h2 id="t-onde" class="titulo titulo--claro titulo--centro">Onde e quando</h2>
+
+      <div class="onde">
+        <dl class="onde__dados">
+          <div><dt>Quando</dt><dd>Sábado, 8 de agosto de 2026</dd></div>
+          <div><dt>Que horas</dt><dd>A partir das 18h</dd></div>
+          <!-- EDITAR: complete o endereço com rua, bairro e cidade/UF -->
+          <div><dt>Onde</dt><dd>Praça do Bosque<br><span data-endereco class="onde__end">Endereço completo em breve</span></dd></div>
+          <div><dt>Quanto</dt><dd>Entrada gratuita</dd></div>
+        </dl>
+
+        <ul class="avisos">
+          <li>A entrada é gratuita. Não tem ingresso, não tem lista, não tem reserva.</li>
+          <li>Não é permitida a atuação de vendedores ambulantes na praça.</li>
+          <li>Noite de agosto engana. Traga um casaco — o quentão resolve o resto.</li>
+        </ul>
+      </div>
+
+      <!-- O iframe do Google Maps só é criado depois do clique. Ver mapa() no script.js. -->
+      <figure class="mapa" data-mapa>
+        <div class="mapa__quadro" data-mapa-quadro>
+          <svg class="mapa__pin" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 22s8-7.6 8-13a8 8 0 1 0-16 0c0 5.4 8 13 8 13Z"/><circle cx="12" cy="9" r="3"/>
+          </svg>
+          <p class="mapa__local">Praça do Bosque</p>
+          <p class="mapa__end" data-endereco>Riviera — Colatina/ES</p>
+          <button class="botao botao--claro" type="button" data-mapa-btn>Ver o mapa aqui</button>
+        </div>
+        <figcaption class="mapa__nota">O mapa é do Google e só carrega quando você clica.</figcaption>
+      </figure>
+
+      <p class="onde__cta">
+        <a class="botao botao--grande botao--claro" data-maps href="#onde">
+          Como chegar
+          <svg viewBox="0 0 24 24" aria-hidden="true" class="botao__ico"><path d="M12 22s8-7.6 8-13a8 8 0 1 0-16 0c0 5.4 8 13 8 13Z"/><circle cx="12" cy="9" r="3"/></svg>
+        </a>
+      </p>
+    </div>
+  </section>
+</main>
+
+<!-- ============ RODAPÉ ============ -->
+<footer class="rodape">
+  <div class="varal varal--rodape" data-varal data-cores="vermelho,amarelo,verde,azul" aria-hidden="true"></div>
+  <div class="wrap rodape__wrap">
+    <p class="rodape__marca">Arraiá Riviera</p>
+    <p class="rodape__data">8 de agosto de 2026 · 18h · Praça do Bosque</p>
+    <p class="rodape__org">Realização: <strong data-organizador>Amigos do Riviera</strong></p>
+    <p class="rodape__causa">
+      Toda a renda é doada integralmente à construção da Igreja Nossa Senhora das Graças, no Riviera.
+    </p>
+    <p class="mao rodape__mao">Leva a família toda. A gente guarda um lugar.</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
