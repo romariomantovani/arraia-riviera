@@ -112,7 +112,7 @@
 
     <a class="selo-linha selo-musica" href="#palco">
       <svg class="selo-linha__ico" aria-hidden="true"><use href="#i-sanfona"/></svg>
-      <span>Música ao vivo com <strong>Cristian &amp; Anderson</strong> e <strong>Lucas Comério</strong></span>
+      <span>Música ao vivo com <strong>Lucas Comério</strong> e <strong>Cristian &amp; Anderson</strong></span>
     </a>
 
     <p class="selo-linha selo-causa">
@@ -268,9 +268,16 @@
         </li>
         <li class="card" data-reveal style="--cor:var(--verde)">
           <svg class="card__ico" aria-hidden="true"><use href="#i-sanfona"/></svg>
-          <h3>Show ao vivo</h3><p>Cristian &amp; Anderson e Lucas Comério, na mesma noite.</p>
+          <h3>Show ao vivo</h3><p>Lucas Comério e Cristian &amp; Anderson, na mesma noite.</p>
         </li>
       </ul>
+
+      <p class="cta-cardapio">
+        <a class="botao botao--grande" href="cardapio.html">
+          Ver o cardápio e os preços
+          <svg viewBox="0 0 24 24" aria-hidden="true" class="botao__ico"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+      </p>
     </div>
   </section>
 
@@ -288,7 +295,7 @@
         </p>
         <ul class="palco__faixa">
           <li>2 atrações</li>
-          <li>Sertanejo e forró</li>
+          <li>Forró no palco</li>
           <li>Até a última música</li>
         </ul>
       </div>
@@ -298,34 +305,34 @@
              ato--impar / ato--par entre os dois <article>. -->
         <article class="ato ato--impar" data-reveal>
           <figure class="ato__foto">
-            <img src="assets/imagens/cristian-anderson.jpg"
-                 alt="Cristian &amp; Anderson, a dupla sertaneja, de camisa preta"
-                 width="900" height="717" loading="lazy" decoding="async">
+            <img src="assets/imagens/cantor-lucas-comerio.jpeg"
+                 alt="Lucas Comério de chapéu preto, com o microfone na mão"
+                 width="432" height="462" loading="lazy" decoding="async">
           </figure>
           <div class="ato__texto">
             <p class="ato__ordem">1ª atração</p>
-            <p class="ato__tag">Dupla sertaneja</p>
-            <h3 class="ato__nome">Cristian &amp; Anderson</h3>
+            <p class="ato__tag">Abre a noite</p>
+            <h3 class="ato__nome">Lucas Comério</h3>
             <p class="ato__desc">
-              A dupla sobe no palco pra puxar o coro da praça. Sertanejo daquele tipo que ninguém
-              precisa saber a letra pra cantar junto — e no fim todo mundo canta.
+              Voz e teclado pra esquentar a praça. É ele quem abre o arraiá, enquanto a fogueira
+              pega e as mesas vão enchendo — a festa começa por aqui.
             </p>
           </div>
         </article>
 
         <article class="ato ato--par" data-reveal>
           <figure class="ato__foto">
-            <img src="assets/imagens/cantor-lucas-comerio.jpeg"
-                 alt="Lucas Comério de chapéu preto, com o microfone na mão"
-                 width="432" height="462" loading="lazy" decoding="async">
+            <img src="assets/imagens/cristian-anderson.jpg"
+                 alt="Cristian &amp; Anderson, a dupla de forró, de camisa preta"
+                 width="900" height="717" loading="lazy" decoding="async">
           </figure>
           <div class="ato__texto">
             <p class="ato__ordem">2ª atração</p>
             <p class="ato__tag">A Pegada do Forró</p>
-            <h3 class="ato__nome">Lucas Comério</h3>
+            <h3 class="ato__nome">Cristian &amp; Anderson</h3>
             <p class="ato__desc">
-              Sanfona, zabumba e a pista cheia até o fim. É a hora em que a quadrilha se desfaz e
-              a praça vira pista de forró — sem hora marcada pra acabar.
+              A dupla assume o palco e a praça vira pista. Forró pra dançar agarrado ou em roda,
+              até a última música — e ninguém vai embora cedo.
             </p>
           </div>
         </article>
@@ -374,7 +381,7 @@
         </p>
         <p>
           Cada copo de quentão, cada prato de comida e cada volta na roleta viram
-          tijolo. Você se diverte e a obra anda.
+          tijolo.
         </p>
       </div>
 
@@ -385,31 +392,136 @@
     </div>
   </section>
 
+  <!-- ============ O PROJETO DA IGREJA ============
+       Continua no mesmo azul da causa de propósito: é o mesmo assunto — a
+       causa diz por quê, a galeria mostra o quê. -->
+  <section class="sec sec--projeto" aria-labelledby="t-projeto">
+    <div class="wrap">
+      <p class="sobrelinha sobrelinha--clara sobrelinha--centro">O que vamos construir</p>
+      <h2 id="t-projeto" class="titulo titulo--claro titulo--centro">O projeto da igreja</h2>
+      <p class="projeto__lead">
+        Estes são os desenhos da futura Igreja Nossa Senhora das Graças, do jeito que ela vai ficar
+        no Riviera. Hoje é projeto, mas com essa e outras festas da comunidade, a obra vai sair do papel.
+      </p>
+
+      <!-- EDITAR: pra trocar um render, gere as duas larguras (1400 e 800) em
+           assets/imagens-projeto-igreja/web/ e ajuste src, srcset e o alt. -->
+      <ul class="galeria-igreja">
+        <li data-reveal>
+          <figure>
+            <img src="assets/imagens-projeto-igreja/web/igreja-fachada-1400.webp"
+                 srcset="assets/imagens-projeto-igreja/web/igreja-fachada-800.webp 800w,
+                         assets/imagens-projeto-igreja/web/igreja-fachada-1400.webp 1400w"
+                 sizes="(min-width: 900px) 33vw, (min-width: 600px) 50vw, 100vw"
+                 alt="Fachada da igreja vista de lado, com a torre, as cruzes e as arcadas, na luz do fim de tarde"
+                 style="--recorte:center top"
+                 width="1400" height="1120" loading="lazy" decoding="async">
+            <figcaption>A fachada, vista da rua</figcaption>
+          </figure>
+        </li>
+        <li data-reveal>
+          <figure>
+            <img src="assets/imagens-projeto-igreja/web/igreja-fachada-frente-1400.webp"
+                 srcset="assets/imagens-projeto-igreja/web/igreja-fachada-frente-800.webp 800w,
+                         assets/imagens-projeto-igreja/web/igreja-fachada-frente-1400.webp 1400w"
+                 sizes="(min-width: 900px) 33vw, (min-width: 600px) 50vw, 100vw"
+                 alt="Fachada da igreja de frente, simétrica, com o Alfa e o Ômega acima da porta"
+                 width="1400" height="787" loading="lazy" decoding="async">
+            <figcaption>De frente, com o Alfa e o Ômega</figcaption>
+          </figure>
+        </li>
+        <li data-reveal>
+          <figure>
+            <img src="assets/imagens-projeto-igreja/web/igreja-nave-1400.webp"
+                 srcset="assets/imagens-projeto-igreja/web/igreja-nave-800.webp 800w,
+                         assets/imagens-projeto-igreja/web/igreja-nave-1400.webp 1400w"
+                 sizes="(min-width: 900px) 33vw, (min-width: 600px) 50vw, 100vw"
+                 alt="Interior da igreja visto de quem entra: os bancos de madeira dos dois lados e o altar ao fundo"
+                 width="1400" height="788" loading="lazy" decoding="async">
+            <figcaption>A nave, de quem entra</figcaption>
+          </figure>
+        </li>
+        <li data-reveal>
+          <figure>
+            <img src="assets/imagens-projeto-igreja/web/igreja-nave-altar-1400.webp"
+                 srcset="assets/imagens-projeto-igreja/web/igreja-nave-altar-800.webp 800w,
+                         assets/imagens-projeto-igreja/web/igreja-nave-altar-1400.webp 1400w"
+                 sizes="(min-width: 900px) 33vw, (min-width: 600px) 50vw, 100vw"
+                 alt="A igreja vista do altar para a entrada, com as imagens de Nossa Senhora e de São José nas laterais"
+                 width="1400" height="788" loading="lazy" decoding="async">
+            <figcaption>Do altar, olhando a igreja cheia</figcaption>
+          </figure>
+        </li>
+        <li data-reveal>
+          <figure>
+            <img src="assets/imagens-projeto-igreja/web/igreja-altar-1400.webp"
+                 srcset="assets/imagens-projeto-igreja/web/igreja-altar-800.webp 800w,
+                         assets/imagens-projeto-igreja/web/igreja-altar-1400.webp 1400w"
+                 sizes="(min-width: 900px) 33vw, (min-width: 600px) 50vw, 100vw"
+                 alt="O altar em mármore claro, com o crucifixo iluminado ao fundo"
+                 style="--recorte:center 22%"
+                 width="1400" height="1120" loading="lazy" decoding="async">
+            <figcaption>O altar</figcaption>
+          </figure>
+        </li>
+        <li data-reveal>
+          <figure>
+            <img src="assets/imagens-projeto-igreja/web/igreja-vitrais-1400.webp"
+                 srcset="assets/imagens-projeto-igreja/web/igreja-vitrais-800.webp 800w,
+                         assets/imagens-projeto-igreja/web/igreja-vitrais-1400.webp 1400w"
+                 sizes="(min-width: 900px) 33vw, (min-width: 600px) 50vw, 100vw"
+                 alt="Lateral da igreja com as janelas em arco e o Sagrado Coração na parede"
+                 width="1400" height="788" loading="lazy" decoding="async">
+            <figcaption>A lateral e as janelas em arco</figcaption>
+          </figure>
+        </li>
+      </ul>
+
+      <p class="frase-destaque">Participe e ajude a concretizar esse projeto de fé.</p>
+    </div>
+  </section>
+
+  <!-- ============ OBRIGADO, COMUNIDADE ============ -->
+  <section class="sec sec--obrigado" aria-labelledby="t-obrigado">
+    <div class="wrap">
+      <div class="obrigado" data-reveal>
+        <p class="obrigado__mao">Obrigado</p>
+        <h2 id="t-obrigado" class="titulo titulo--centro">A festa é feita por muita gente</h2>
+        <p>
+          Antes de qualquer patrocínio, existe gente da comunidade que doa os ingredientes,
+          acorda cedo pra fazer a comida, monta barraca, serve, lava louça e só senta quando
+          o último prato saiu.
+        </p>
+        <p>
+          A todos os fiéis que dão o que têm e o tempo que não sobra pra esta festa acontecer:
+          <strong>obrigado</strong>. 
+        </p>
+      </div>
+    </div>
+  </section>
+
   <!-- ============ PATROCINADORES ============ -->
   <section class="sec sec--patros" aria-labelledby="t-patros">
     <div class="wrap">
       <p class="sobrelinha sobrelinha--centro">Quem ajuda a levantar o arraiá</p>
       <h2 id="t-patros" class="titulo titulo--centro">Nossos patrocinadores</h2>
-      <p class="patros__lead">
-        São eles que bancam a estrutura da festa — por isso a entrada pode ser
-        gratuita e a arrecadação vai inteira para a igreja.
-      </p>
 
       <!-- EDITAR: pra incluir um patrocinador novo, coloque o logo em
-           assets/patrocinadores/ e copie um <li> destes, trocando src e alt. -->
+           assets/patrocinadores/ e copie um <li> destes, trocando src e alt.
+           A lista está em ordem alfabética — encaixe o novo no lugar certo. -->
       <ul class="patros">
-        <li class="patros__item" data-reveal><img src="assets/patrocinadores/RR-engenharia.jpg" alt="RR Engenharia" width="1206" height="918" loading="lazy" decoding="async"></li>
-        <li class="patros__item" data-reveal><img src="assets/patrocinadores/nextcom.webp" alt="NEXTCON Engenharia" width="833" height="261" loading="lazy" decoding="async"></li>
         <li class="patros__item" data-reveal><img src="assets/patrocinadores/brunetti.png" alt="Brunetti Implementos" width="1175" height="393" loading="lazy" decoding="async"></li>
-        <li class="patros__item" data-reveal><img src="assets/patrocinadores/george-veiculos.png" alt="George Veículos" width="1094" height="396" loading="lazy" decoding="async"></li>
-        <li class="patros__item" data-reveal><img src="assets/patrocinadores/george-motos.jpeg" alt="George Motos" width="225" height="225" loading="lazy" decoding="async"></li>
-        <li class="patros__item" data-reveal><img src="assets/patrocinadores/del-pietro.png" alt="Del Pietro Empreendimentos Imobiliários" width="740" height="408" loading="lazy" decoding="async"></li>
         <li class="patros__item" data-reveal><img src="assets/patrocinadores/casa-design.jpeg" alt="Casa Design, com Márcia Krüger" width="225" height="225" loading="lazy" decoding="async"></li>
+        <li class="patros__item" data-reveal><img src="assets/patrocinadores/del-pietro.png" alt="Del Pietro Empreendimentos Imobiliários" width="740" height="408" loading="lazy" decoding="async"></li>
+        <li class="patros__item" data-reveal><img src="assets/patrocinadores/george-motos.jpeg" alt="George Motos" width="225" height="225" loading="lazy" decoding="async"></li>
+        <li class="patros__item" data-reveal><img src="assets/patrocinadores/george-veiculos.png" alt="George Veículos" width="1094" height="396" loading="lazy" decoding="async"></li>
         <li class="patros__item" data-reveal><img src="assets/patrocinadores/marilandia.jpeg" alt="Marilândia Comércio de Café" width="225" height="225" loading="lazy" decoding="async"></li>
-        <li class="patros__item" data-reveal><img src="assets/patrocinadores/capixaba-vassoura.jpg" alt="Vassouras Capixaba" width="646" height="646" loading="lazy" decoding="async"></li>
-        <li class="patros__item" data-reveal><img src="assets/patrocinadores/tonon.png" alt="Tonon" width="225" height="225" loading="lazy" decoding="async"></li>
+        <li class="patros__item" data-reveal><img src="assets/patrocinadores/nextcom.webp" alt="NEXTCON Engenharia" width="833" height="261" loading="lazy" decoding="async"></li>
         <li class="patros__item" data-reveal><img src="assets/patrocinadores/nimbus.png" alt="Nimbus" width="224" height="224" loading="lazy" decoding="async"></li>
         <li class="patros__item" data-reveal><img src="assets/patrocinadores/reklusa.png" alt="Reklusa" width="224" height="225" loading="lazy" decoding="async"></li>
+        <li class="patros__item" data-reveal><img src="assets/patrocinadores/RR-engenharia.jpg" alt="RR Engenharia" width="1206" height="918" loading="lazy" decoding="async"></li>
+        <li class="patros__item" data-reveal><img src="assets/patrocinadores/tonon.png" alt="Tonon" width="225" height="225" loading="lazy" decoding="async"></li>
+        <li class="patros__item" data-reveal><img src="assets/patrocinadores/capixaba-vassoura.webp" alt="Vassouras Capixaba" width="1360" height="464" loading="lazy" decoding="async"></li>
       </ul>
 
       <p class="patros__pe mao">Quer apoiar o arraiá? Fale com os Amigos do Riviera.</p>
@@ -470,6 +582,9 @@
     <p class="rodape__org">Realização: <strong data-organizador>Amigos do Riviera</strong></p>
     <p class="rodape__causa">
       Toda a renda é doada integralmente à construção da Igreja Nossa Senhora das Graças, no Riviera.
+    </p>
+    <p class="rodape__links">
+      <a href="cardapio.html">Ver o cardápio e os preços</a>
     </p>
     <p class="mao rodape__mao">Leva a família toda. A gente guarda um lugar.</p>
   </div>

@@ -621,6 +621,90 @@ img{ max-width:100%; display:block; }
   letter-spacing:.16em; text-transform:uppercase;
 }
 
+/* ---------- o projeto da igreja ----------
+   Mesmo azul da causa, com o topo mais curto: as duas seções são o mesmo
+   assunto e devem ler como uma coisa só, não como duas faixas iguais. */
+.sec--projeto{
+  background:var(--azul);
+  color:#fff;
+  padding-top:0;
+}
+.sec--projeto .titulo{ color:#fff; text-shadow:3px 3px 0 var(--tinta); }
+.projeto__lead{
+  max-width:52ch;
+  margin:-1rem auto clamp(2rem,5vw,2.75rem);
+  text-align:center;
+}
+
+.galeria-igreja{
+  list-style:none; margin:0; padding:0;
+  display:grid; gap:clamp(.85rem,2.2vw,1.35rem);
+  grid-template-columns:1fr;
+}
+.galeria-igreja figure{ margin:0; }
+/* O height:auto é obrigatório: sem ele o atributo height="1120" do HTML vale
+   como altura em px, os dois eixos ficam definidos e a aspect-ratio é ignorada
+   — as imagens saíam com 319 de largura por 1120 de altura.
+   O --recorte deixa cada figura escolher de onde o corte sai: os renders são
+   16:9 e 5:4 misturados, e no corte centralizado as cruzes do alto das torres
+   e o crucifixo do altar ficavam de fora. */
+.galeria-igreja img{
+  width:100%; height:auto;
+  aspect-ratio:3/2;
+  object-fit:cover;
+  object-position:var(--recorte,center);
+  display:block;
+  background:var(--noite-2);
+  border:var(--linha) solid var(--amarelo);
+  border-radius:var(--raio);
+  box-shadow:6px 6px 0 rgba(0,0,0,.28);
+}
+.galeria-igreja figcaption{
+  margin-top:.5rem;
+  font-family:var(--f-mao); font-size:1.15rem;
+  text-align:center;
+  color:var(--amarelo); opacity:.9;
+}
+
+/* a frase que fecha a seção — é o destaque da causa na página */
+.frase-destaque{
+  max-width:22ch;
+  margin:clamp(2.5rem,6vw,3.75rem) auto 0;
+  padding-top:clamp(1.5rem,4vw,2rem);
+  border-top:var(--linha) solid var(--amarelo);
+  font-family:var(--f-display); font-weight:400;
+  font-size:clamp(1.5rem,4.4vw,2.6rem); line-height:1.2;
+  text-align:center;
+  color:var(--amarelo);
+  text-shadow:3px 3px 0 var(--tinta);
+}
+
+/* ---------- obrigado, comunidade ---------- */
+.sec--obrigado{ background:var(--papel); }
+.obrigado{
+  max-width:640px;
+  margin-inline:auto;
+  padding:clamp(1.75rem,5vw,2.75rem) clamp(1.25rem,4vw,2.5rem) clamp(2rem,5vw,2.75rem);
+  background:#fff;
+  border:var(--linha) solid var(--tinta);
+  border-radius:var(--raio);
+  box-shadow:8px 8px 0 var(--verde);
+  text-align:center;
+}
+.obrigado__mao{
+  margin:0 0 .25rem;
+  font-family:var(--f-mao); font-weight:700;
+  font-size:clamp(3rem,10vw,4.75rem); line-height:1;
+  color:var(--verde);
+}
+.obrigado .titulo{
+  font-size:clamp(1.5rem,4vw,2.15rem);
+  margin-bottom:1.25rem;
+}
+.obrigado p{ margin:0 0 .9rem; }
+.obrigado p:last-child{ margin-bottom:0; }
+.obrigado strong{ color:var(--verde); }
+
 /* ---------- patrocinadores ---------- */
 .sec--patros{ background:var(--papel-2); }
 .patros__lead{
@@ -636,9 +720,8 @@ img{ max-width:100%; display:block; }
 /* Placa branca com respiro: os logos têm fundos diferentes (branco, preto,
    vermelho) e entram inteiros, sem recorte nem distorção. */
 .patros__item{
-  display:grid; place-items:center;
+  position:relative;
   aspect-ratio:3/2;
-  padding:.9rem;
   background:#fff;
   border:var(--linha) solid var(--tinta);
   border-radius:var(--raio);
@@ -646,8 +729,17 @@ img{ max-width:100%; display:block; }
   transition:transform .18s ease, box-shadow .18s ease;
 }
 .patros__item:hover{ transform:translate(-3px,-3px); box-shadow:8px 8px 0 var(--amarelo); }
+/* A imagem é posicionada pelos quatro lados, com um respiro de .9rem. Isso dá
+   a ela uma caixa de tamanho definido, que é o ponto: com a imagem no fluxo,
+   ela ficava no tamanho intrínseco (um height:100% não resolve contra uma
+   altura vinda de aspect-ratio) — os logos quadrados esticavam a própria
+   placa e a grade saía com alturas de 100 a 151px na mesma linha.
+   O object-fit:contain encaixa o logo aí dentro, sem cortar nem distorcer. */
 .patros__item img{
+  position:absolute;
+  inset:0;
   width:100%; height:100%;
+  padding:.9rem;
   object-fit:contain;
 }
 .patros__pe{
@@ -777,6 +869,146 @@ img{ max-width:100%; display:block; }
 }
 .rodape__mao{ margin:1.25rem 0 0; color:var(--amarelo); }
 
+/* ==========================================================================
+   Cardápio (cardapio.html)
+   Página à parte, mesma folha de estilo: reaproveita .sec, .wrap, .varal,
+   .placa, .selo-linha, .rodape e [data-reveal] da home.
+   ========================================================================== */
+
+.sec--capa{
+  padding-top:clamp(120px,16vw,175px);
+  padding-bottom:clamp(28px,5vw,44px);
+  background:
+    radial-gradient(120% 80% at 78% 8%, var(--papel-2), transparent 62%),
+    var(--papel);
+  overflow:hidden;
+}
+.capa{ position:relative; z-index:1; text-align:center; }
+
+/* O z-index não é enfeite: a .placa tem line-height .86, então o texto vaza
+   pra cima da própria caixa e chegava a cobrir este link — o clique ia parar
+   na palavra "Cardápio" e o link não funcionava. */
+.voltar{
+  position:relative; z-index:1;
+  display:inline-flex; align-items:center; gap:.45rem;
+  margin-bottom:1rem;
+  font-size:.8125rem; font-weight:800;
+  letter-spacing:.14em; text-transform:uppercase;
+  color:var(--vermelho); text-decoration:none;
+}
+.voltar svg{
+  width:18px; height:18px;
+  fill:none; stroke:currentColor; stroke-width:3;
+  stroke-linecap:round; stroke-linejoin:round;
+}
+.voltar:hover{ text-decoration:underline; text-underline-offset:4px; }
+
+/* A folga de topo é em `em` porque o vazamento do texto cresce junto com a
+   fonte, que vai de 2.9rem a 6.5rem pelo clamp: em px resolveria numa largura
+   de tela e falharia na outra. */
+.placa--capa{
+  align-items:center;
+  font-size:clamp(2.9rem,13vw,6.5rem);
+  margin:.18em 0 .75rem;
+}
+.capa__evento{ margin:0 0 1.5rem; font-weight:600; }
+/* na capa o selo fica centralizado, não alinhado à esquerda como no hero */
+.capa .selo-linha{ margin-inline:auto; text-align:left; }
+
+.sec--cardapio{ background:var(--papel-2); }
+.cardapio{
+  display:grid;
+  gap:clamp(1.25rem,3vw,1.75rem);
+  max-width:900px;
+}
+
+/* cada grupo é uma placa de papel com a sua cor */
+.grupo{
+  background:#fff;
+  border:var(--linha) solid var(--tinta);
+  border-radius:var(--raio);
+  box-shadow:7px 7px 0 var(--cor,var(--amarelo));
+  padding:clamp(1.1rem,3vw,1.6rem) clamp(1rem,3vw,1.75rem) clamp(1.25rem,3vw,1.75rem);
+}
+.grupo__titulo{
+  display:flex; align-items:center; gap:.6rem;
+  margin:0 0 .9rem;
+  padding-bottom:.7rem;
+  border-bottom:var(--linha) solid var(--tinta);
+  font-family:var(--f-display); font-weight:400;
+  font-size:clamp(1.3rem,3.6vw,1.75rem); line-height:1.2;
+}
+.grupo__ico{
+  width:34px; height:34px; flex:none;
+  fill:none; stroke:var(--tinta); stroke-width:3;
+  stroke-linecap:round; stroke-linejoin:round;
+}
+
+.itens{ list-style:none; margin:0; padding:0; }
+/* flex-wrap + a nota ocupando 100%: o nome fica sempre numa linha só, então a
+   linha pontilhada continua ligando nome e preço, e a nota desce sozinha. */
+.item{
+  display:flex; flex-wrap:wrap; align-items:baseline; gap:0 .4rem;
+  padding:.45rem 0;
+}
+.item + .item{ border-top:1px dashed rgba(58,36,24,.18); }
+.item__nome{ font-weight:600; }
+.item__nota{
+  flex:0 0 100%;
+  font-size:.8125rem;
+  opacity:.6;
+}
+/* o vão pontilhado que liga o nome ao preço — a assinatura do cardápio */
+.item__pontos{
+  flex:1 1 auto;
+  min-width:1.5rem;
+  align-self:flex-end;
+  margin-bottom:.28em;
+  border-bottom:2px dotted rgba(58,36,24,.35);
+}
+.item__preco{
+  flex:none;
+  font-family:var(--f-display); font-weight:400;
+  font-size:1.1rem;
+  font-variant-numeric:tabular-nums;
+  color:var(--vermelho);
+}
+
+.pagamento{
+  margin:clamp(.5rem,2vw,1rem) 0 0;
+  padding:1rem 1.2rem;
+  background:var(--papel);
+  border:var(--linha) dashed var(--tinta);
+  border-radius:var(--raio);
+  text-align:center;
+}
+.pagamento strong{ display:block; color:var(--vermelho); }
+
+.cardapio__mao{ margin:.75rem 0 0; text-align:center; }
+
+.rodape__links{ margin:1rem 0 0; }
+.rodape__links a{ color:var(--amarelo); font-weight:800; text-underline-offset:4px; }
+
+/* chamada pro cardápio, no fim da grade de atrações da home */
+.cta-cardapio{ text-align:center; margin:clamp(2.25rem,5vw,3.25rem) 0 0; }
+
+@media (min-width:760px){
+  .grupo--curto .itens{
+    display:grid; grid-template-columns:1fr 1fr;
+    column-gap:clamp(1.5rem,4vw,2.5rem);
+  }
+  /* em duas colunas não existe "item anterior" na vertical: a borda sai */
+  .grupo--curto .item + .item{ border-top:0; }
+}
+
+/* Nome comprido não espreme o preço: o item quebra em duas linhas e o preço
+   desce alinhado à direita, com os pontinhos fora do caminho. */
+@media (max-width:420px){
+  .item{ flex-wrap:wrap; }
+  .item__pontos{ min-width:0; }
+  .item__preco{ margin-left:auto; }
+}
+
 /* ---------- revelação no scroll ----------
    O --tilt entra no mesmo transform da revelação: quem quiser ficar torto
    (as fotos do mural) declara --tilt e a inclinação sobrevive à animação. */
@@ -802,6 +1034,10 @@ img{ max-width:100%; display:block; }
 }
 
 /* ---------- telas médias ---------- */
+@media (min-width:600px){
+  .galeria-igreja{ grid-template-columns:1fr 1fr; }
+}
+
 @media (min-width:640px){
   .mural{
     grid-template-columns:3fr 4fr;   /* 9:16 e 3:4 fecham na mesma altura */
@@ -830,6 +1066,7 @@ img{ max-width:100%; display:block; }
 }
 
 @media (min-width:900px){
+  .galeria-igreja{ grid-template-columns:repeat(3,1fr); }
   .mural{
     grid-template-columns:3fr 4fr 2.6fr;
     align-items:center;

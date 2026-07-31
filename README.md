@@ -9,12 +9,16 @@ Realização dos **Amigos do Riviera**. Todo valor arrecadado é doado integralm
 HTML, CSS e JavaScript puros. Sem build, sem dependências, sem `node_modules`.
 
 ```
-index.html    conteúdo e ícones (SVG desenhados no próprio arquivo)
-styles.css    cores, tipografia e layout
+index.html    a home: conteúdo e ícones (SVG desenhados no próprio arquivo)
+cardapio.html o cardápio, com os itens e preços — editado direto no arquivo
+styles.css    cores, tipografia e layout das duas páginas
 script.js     CONFIG + contagem + varal + vídeo + mapa
 assets/       fotos, vídeo e logos de patrocinador (ver assets/README.md)
 favicon.svg   ícone da aba
 ```
+
+As duas páginas dividem `styles.css` e `script.js`. O `script.js` é seguro numa página sem hero: cada
+função sai cedo quando não acha os elementos dela.
 
 ## As seções, na ordem
 
@@ -23,11 +27,13 @@ favicon.svg   ícone da aba
 | Hero | papel | Placa, selo da música ao vivo, selo da doação, ficha do evento e a **contagem regressiva em destaque** |
 | O convite | papel-2 | Texto de chamada |
 | Como foi em 2025 | noite | Vídeo (só toca no clique) e as duas fotos do arraiá passado |
-| O que vai ter | papel | Grade de atrações |
-| Música ao vivo | noite | Um bloco largo por atração: Cristian & Anderson e Lucas Comério |
+| O que vai ter | papel | Grade de atrações **e o botão do cardápio** |
+| Música ao vivo | noite | Um bloco largo por atração: Lucas Comério abre, Cristian & Anderson fecham |
 | Área Kids | verde | Tio Wilsinho |
 | A causa | azul | Amigos do Riviera e a doação integral para a igreja |
-| Patrocinadores | papel-2 | Os 12 logos |
+| O projeto da igreja | azul | Galeria com 6 renders 3D e a frase em destaque |
+| Obrigado, comunidade | papel | Agradecimento a quem doa, cozinha e trabalha na festa |
+| Patrocinadores | papel-2 | Os 12 logos, em ordem alfabética |
 | Onde e quando | noite | Dados, avisos e o **mapa** |
 | Rodapé | vermelho | Realização e a doação |
 
@@ -138,7 +144,19 @@ Site estático — a Vercel serve os arquivos direto, sem etapa de build. Cada p
   `transform`, e o `--tilt` é o que faz as duas coisas conviverem. As fotos das atrações ficam retas de
   propósito: é o que separa "foto oficial do artista" de "registro da festa passada".
 - **Na seção de música ao vivo, a foto troca de lado por `grid-column`**, não por `order`. Assim o que
-  se lê na tela e o que o leitor de tela anuncia seguem a mesma ordem: 1ª atração, depois 2ª.
+  se lê na tela e o que o leitor de tela anuncia seguem a mesma ordem: 1ª atração, depois 2ª. Pra
+  inverter a ordem das atrações, troque as classes `ato--impar` / `ato--par` entre os dois `<article>`.
+- **O logo de patrocinador é posicionado por `position:absolute` dentro da placa**, e não no fluxo.
+  Parece exagero, mas é o que mantém a grade alinhada: no fluxo, um `height:100%` não resolve contra
+  uma altura que veio de `aspect-ratio`, a imagem voltava ao tamanho intrínseco e os logos quadrados
+  esticavam a própria placa — a grade saía com alturas de 100 a 151px na mesma linha.
+- **No cardápio, a nota do item (`.item__nota`) é irmã do nome, não filha.** Ela ocupa 100% da largura
+  e cai sozinha na linha de baixo; assim o nome fica sempre numa linha só e a linha pontilhada
+  continua ligando nome e preço.
+- **A galeria da igreja sempre precisa de `height:auto` junto da `aspect-ratio`.** Sem ele o atributo
+  `height` do HTML vale como altura em px, os dois eixos ficam definidos e a `aspect-ratio` é ignorada.
+  O recorte de cada render é escolhido pela variável `--recorte` no `style` da imagem — no corte
+  centralizado, as cruzes do alto das torres ficavam de fora.
 - **As fotos das atrações entram na proporção do arquivo** (`width`/`height` no HTML + `height:auto`).
   As duas têm formato e fundo diferentes, e nenhuma moldura única servia para as duas sem cortar gente
   ou deixar borda cinza — então cada uma fica no seu formato, com o mesmo tratamento de moldura.
