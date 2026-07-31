@@ -305,9 +305,12 @@
              ato--impar / ato--par entre os dois <article>. -->
         <article class="ato ato--impar" data-reveal>
           <figure class="ato__foto">
+            <!-- Sem loading="lazy" de propósito: são 15 KB, e imagem preguiçosa
+                 dentro de bloco que começa invisível já deixou de carregar em
+                 navegador de celular. Não há o que economizar adiando. -->
             <img src="assets/imagens/cantor-lucas-comerio.jpeg"
                  alt="Lucas Comério de chapéu preto, com o microfone na mão"
-                 width="432" height="462" loading="lazy" decoding="async">
+                 width="432" height="462" decoding="async">
           </figure>
           <div class="ato__texto">
             <p class="ato__ordem">1ª atração</p>
@@ -324,7 +327,7 @@
           <figure class="ato__foto">
             <img src="assets/imagens/cristian-anderson.jpg"
                  alt="Cristian &amp; Anderson, a dupla de forró, de camisa preta"
-                 width="900" height="717" loading="lazy" decoding="async">
+                 width="900" height="717" decoding="async">
           </figure>
           <div class="ato__texto">
             <p class="ato__ordem">2ª atração</p>

@@ -394,11 +394,15 @@ img{ max-width:100%; display:block; }
   width:100%;
 }
 .filme__quadro{ position:relative; }
+/* height:auto, nunca 100%: num pai de altura automática o percentual não
+   resolve, a imagem tomava a figure inteira e a legenda ficava de fora do
+   fluxo — caía em cima do texto da coluna seguinte. A altura certa vem da
+   aspect-ratio que cada uma declara logo abaixo. */
 .filme__video,
 .retrato img,
 .mural__faixa img{
   display:block;
-  width:100%; height:100%;
+  width:100%; height:auto;
   background:var(--noite-2);
   border:var(--linha) solid var(--amarelo);
   border-radius:var(--raio);
@@ -449,6 +453,11 @@ img{ max-width:100%; display:block; }
 .mural__nota p{ margin:0; }
 .mural__nota .mao{ margin-bottom:.5rem; color:var(--amarelo); }
 .mural__nota{ max-width:42ch; opacity:.92; }
+/* Empilhada, a nota fica logo abaixo das legendas das fotos — e "Foi assim ano
+   passado" é a mesma letra de mão amarela que elas. Sem esta folga as duas
+   linhas leem como um bloco só. Na coluna própria (≥900px) a folga não é
+   necessária: o que separa ali é o vão da grade. */
+.mural__nota{ margin-top:clamp(.75rem,3vw,1.5rem); }
 
 /* ---------- grade de atrações ---------- */
 .grade{
@@ -1071,7 +1080,8 @@ img{ max-width:100%; display:block; }
     grid-template-columns:3fr 4fr 2.6fr;
     align-items:center;
   }
-  .mural__nota{ grid-column:auto; max-width:none; }
+  /* na coluna própria não fica embaixo de legenda nenhuma: o vão da grade já separa */
+  .mural__nota{ grid-column:auto; max-width:none; margin-top:0; }
   .causa{ grid-template-columns:.45fr 1.35fr .5fr; }
   .selo{ margin:0; }
 }
